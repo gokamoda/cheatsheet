@@ -6,3 +6,7 @@ poetry.lock
 
 .DS_Store
 .ruff_cache
+work
+uv.lock
+.env
+.python-version

@@ -1,12 +1,15 @@
 [project]
-name = "template"
+name = "cheatsheet"
 version = "0.1.0"
 description = "Add your description here"
 authors = ["gokamoda <gokamoda@gmail.com>"]
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+    "datasets>=3.1.0",
+    "python-dotenv>=1.0.1",
     "rich>=13.9.4",
+    "transformers>=4.46.3",
 ]
 
 [tool.uv]
@@ -14,14 +17,14 @@ dev-dependencies = [
     "ipython>=8.29.0",
     "mypy>=1.11.2",
     "pre-commit>=3.8.0",
-    "ruff>=0.6.6",
+    "ruff>=0.7.2",
 ]
 
 
 
 [tool.ruff]
 exclude = [".git", ".mypy_cache", ".ruff_cache", ".venv", "third_party"]
-line-length = 160
+line-length = 88
 target-version = "py311"
 
 [tool.ruff.lint]

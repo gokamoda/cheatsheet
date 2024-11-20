@@ -14,7 +14,7 @@
     source .cargo/env
     ```
 
-## Create environmen
+## Create environment
 - Create .venv
     ```
     uv sync

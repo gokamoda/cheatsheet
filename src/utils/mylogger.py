@@ -5,7 +5,9 @@ from pathlib import Path
 from rich.logging import RichHandler
 
 
-def init_logging(logger_name: str, log_path: str = "logs/info.log") -> logging.Logger:
+def init_logging(
+    logger_name: str, log_path: str = "logs/info.log", clear=False
+) -> logging.Logger:
     """_summary_
 
     Parameters
@@ -30,9 +32,16 @@ def init_logging(logger_name: str, log_path: str = "logs/info.log") -> logging.L
     if not dir_path.exists():
         dir_path.mkdir(parents=True)
 
+    if clear:
+        with open(log_path, "w") as f:
+            f.write("")
+
     if logger.handlers == []:
         dir_path.mkdir(parents=True, exist_ok=True)
-        formatter = logging.Formatter("%(asctime)s/%(levelname)s/%(name)s/%(funcName)s():%(lineno)s\n" "%(message)s\n")
+        formatter = logging.Formatter(
+            "%(asctime)s/%(levelname)s/%(name)s/%(funcName)s():%(lineno)s\n"
+            "%(message)s\n"
+        )
 
         # file handler
         fh = logging.FileHandler(log_path)
@@ -40,7 +49,7 @@ def init_logging(logger_name: str, log_path: str = "logs/info.log") -> logging.L
         fh.setFormatter(formatter)
 
         # console handler
-        ch = RichHandler(rich_tracebacks=True)
+        ch = RichHandler(rich_tracebacks=True, show_time=False, show_level=False)
         # ch = logging.StreamHandler(sys.stdout)
         ch.setLevel(logging.INFO)
         ch.setFormatter(formatter)
